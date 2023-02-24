@@ -1,6 +1,6 @@
 <div class="navbarContainer">
   <div>
-    Logo
+    This is the logo
   </div>
   <nav >
     <ul class="navbar">
@@ -11,6 +11,7 @@
     </ul>
   </nav>
   <div>
-    Cart:
+    <p>Items: {{ itemsOnCart}}</p>
+    <p>Total: {{ totalOnCart | currency:'MXN'}}</p>
   </div>
 </div>

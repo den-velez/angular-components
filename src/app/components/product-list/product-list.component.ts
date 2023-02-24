@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 
-import { ProductsService } from '../../services/products.service'
+import { ProductsService} from '../../services/products.service'
+import { StorageService } from '../../services/storage.service'
 
 @Component({
   selector: 'app-product-list',
@@ -9,11 +10,11 @@ import { ProductsService } from '../../services/products.service'
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  constructor(private productsService:ProductsService) {}
+  constructor(private productsService:ProductsService, private storageService: StorageService) {
+    this.productList = this.storageService.getItemsOnMyCart();
+  }
 
   productList: Product[] = []
-
-  productsInCard: Product[] = []
   itemsAdded = 0
   totalItemsAdded = 0
 
@@ -22,9 +23,8 @@ export class ProductListComponent implements OnInit {
   }
 
   addProductToCard(product: Product){
-    console.log(product)
-    this.productsInCard.push(product)
-    this.itemsAdded = this.productsInCard.length
-    this.totalItemsAdded = this.productsInCard.reduce((sum, item) => sum + item.price, 0)
+    this.storageService.addProduct(product)
+    this.itemsAdded = this.storageService.getItemsOnMyCart().length
+    this.totalItemsAdded = this.storageService.getTotalItemsOnMyCart()
   }
 }
