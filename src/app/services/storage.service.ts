@@ -6,7 +6,6 @@ import { Product } from '../models/product.model'
   providedIn: 'root'
 })
 export class StorageService {
-  constructor() { }
 
   private itemsOnMyCart: Product[] = [];
   private myCart = new BehaviorSubject<Product[]>([]);
