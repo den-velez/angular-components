@@ -1,0 +1,11 @@
+<div class="productList" *ngIf="productList">
+  <app-product
+    [product]="product"
+    *ngFor="let product of productList"
+    (addProduct)="addProductToCard($event)"
+  ></app-product>
+  <br>
+  <br>
+</div>
+<p>items:{{itemsAdded}}</p>
+<p>total ${{totalItemsAdded}}</p>

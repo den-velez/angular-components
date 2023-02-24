@@ -1,0 +1,18 @@
+.product {
+  height: 100%;
+  h2 {
+    font-size:20px;
+  }
+}
+
+.productDescription {
+  display: flex;
+  padding: 0 16px;
+  justify-content: space-between;
+  button {
+    background-color: blue;
+    color: #f9f9f9;
+    border: 1 solid white;
+    border-radius: 5px;
+  }
+}
