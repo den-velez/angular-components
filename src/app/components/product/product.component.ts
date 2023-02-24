@@ -9,10 +9,11 @@ import { Product } from '../../models/product.model';
 export class ProductComponent {
   @Input() product: Product = {
     id: 1,
-    name: 'Producto 1',
-    image: './assets/images/iphone.png',
-    description: 'This is the first product',
-    price: 100,
+    title: '',
+    image: '',
+    description: '',
+    price: 0,
+    category:''
   };
 
   @Output() addProduct = new EventEmitter<Product>();

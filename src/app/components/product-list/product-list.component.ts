@@ -1,53 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+
+import { ProductsService } from '../../services/products.service'
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent {
-  productList: Product[] = [
-    {
-      id: 1,
-      name: 'Producto 1',
-      image: './assets/images/iphone.png',
-      description: 'This is the first product',
-      price: 100,
-    },
-    {
-      id: 2,
-      name: 'Producto 2',
-      image: './assets/images/iphone.png',
-      description: 'This is the first product',
-      price: 200,
-    },
-    {
-      id: 3,
-      name: 'Producto 3',
-      image: './assets/images/iphone.png',
-      description: 'This is the first product',
-      price: 300,
-    },
-    {
-      id: 4,
-      name: 'Producto 4',
-      image: './assets/images/iphone.png',
-      description: 'This is the first product',
-      price: 400,
-    },
-    {
-      id: 5,
-      name: 'Producto 5',
-      image: './assets/images/iphone.png',
-      description: 'This is the first product',
-      price: 500,
-    },
-  ];
+export class ProductListComponent implements OnInit {
+  constructor(private productsService:ProductsService) {}
+
+  productList: Product[] = []
 
   productsInCard: Product[] = []
   itemsAdded = 0
   totalItemsAdded = 0
+
+  ngOnInit(): void {
+    this.productsService.getProducts().subscribe(data => this.productList = data)
+  }
 
   addProductToCard(product: Product){
     console.log(product)
